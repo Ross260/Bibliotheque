@@ -26,8 +26,8 @@
                 <input type="date" name="date_entree" id="borrow-date" required>
 
                 <label for="due-date">Date d'Échéance :</label>
-                <input type="date" name="date_sortie" id="due-date" required>
-                <input type="text" name="etat" id="due-date" value="indisponible">
+                <input type="date" name="date_sortie" required>
+                <input type="text" name="etat" value="indisponible" hidden>
 
                 <button type="submit" name="bout">Enregistrer l'Emprunt</button>
             </form>
