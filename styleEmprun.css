@@ -49,8 +49,8 @@ nav a {
 }
 
 nav a:hover {
-    color: #A8D5BA;
-    color: #75ad8c; /* Change la couleur du texte */
+    color: #17d764;
+    color: #17d764; /* Change la couleur du texte */
 }
 
 .container {
@@ -63,7 +63,7 @@ nav a:hover {
 }
 
 h2 {
-    color: #A8D5BA;
+    color: #17d764;
     margin-bottom: 1.5rem;
     text-align: center;
     font-size: 1.8rem;
@@ -78,7 +78,7 @@ h2 {
     font-weight: bold;
     margin-bottom: 1rem;
     color: #2C3E50;
-    border-bottom: 2px solid #A8D5BA;
+    border-bottom: 2px solid #17d764;
     padding-bottom: 0.5rem;
 }
 
@@ -101,13 +101,13 @@ input, select, button {
 }
 
 input:focus, select:focus {
-    border-color: #A8D5BA;
+    border-color: #17d764;
     outline: none;
     box-shadow: 0 0 5px rgba(250, 108, 94, 0.5);
 }
 
 button {
-    background-color: #A8D5BA;
+    background-color: #17d764;
     color: white;
     border: none;
     cursor: pointer;
@@ -119,14 +119,14 @@ button {
 }
 
 button:hover {
-    background-color: #75ad8c;
+    background-color: #17d764;
 }
 
 .back-to-top {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #A8D5BA;
+    background-color: #17d764;
     color: white;
     border: none;
     padding: 0.8rem 1rem;
@@ -142,5 +142,5 @@ button:hover {
 
 .back-to-top:hover {
     transform: scale(1); 
-    background-color: #75ad8c;
+    background-color: #17d764;
 }

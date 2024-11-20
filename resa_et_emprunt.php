@@ -47,7 +47,7 @@
 
         #search-btn {
             padding: 10px 20px;
-            background-color: #A8D5BA;
+            background-color: #17d764;
             color: white;
             border: none;
             border-radius: 5px;
@@ -55,7 +55,7 @@
         }
 
         #search-btn:hover {
-            background-color: #A8D5BA;
+            background-color: #17d764;
         }
 
         .filters {
@@ -96,7 +96,7 @@
         }
 
         .reserve-btn {
-            background-color: #75ad8c;
+            background-color: #17d764;
             color: white;
             padding: 8px 15px;
             border: none;
@@ -105,7 +105,7 @@
         }
 
         .reserve-btn:hover {
-            background-color: #75ad8c;
+            background-color: #17d764;
         }
     </style>
     
@@ -187,11 +187,6 @@
 
         bookList.appendChild(row); // Ajoute la grille au conteneur
     }
-
-
-        // Fonction pour afficher la liste des livres
-
-
 
         // Fonction de recherche
         document.getElementById("search-btn").addEventListener("click", () => {

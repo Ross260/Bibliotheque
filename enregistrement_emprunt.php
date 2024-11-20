@@ -53,7 +53,7 @@ if (isset($_GET['id'])) {
                     $conn = new PDO('mysql:host=localhost;dbname=bibliotheque', 'root', '');
 
                     if ($conn) {
-                        echo "connexion reussie";
+                        // echo "connexion reussie";
                     }
                     if(isset($_POST["bout"])){
                         // Connexion à la base de données
@@ -69,9 +69,7 @@ if (isset($_GET['id'])) {
                     $stmt = $conn->prepare($sql);
                     $stmt->bindParam(':etat', $etat);
                     $stmt->bindParam(':nom_livre', $nom);
-
-
-                        
+                    
                     }
                     if ($stmt->execute()) {
                         ?> 
