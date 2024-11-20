@@ -156,23 +156,38 @@
 
         // Fonction pour afficher la liste des livres
         function renderBooks(filteredBooks) {
-            const bookList = document.getElementById("book-list");
-            bookList.innerHTML = ''; // Réinitialise la liste
+        const bookList = document.getElementById("book-list");
+        bookList.innerHTML = ''; // Réinitialise la liste
 
-            filteredBooks.forEach(book => {
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `
-                    <div class="book-details">
-                        <strong>${book.titre}</strong> par ${book.auteur} (${book.categorie}, ${book.annee_publication})
+        // Crée une grille Bootstrap
+        const row = document.createElement("div");
+        row.className = "row row-cols-1 row-cols-md-3 g-4"; // Grille responsive Bootstrap
+
+        filteredBooks.forEach(book => {
+            const col = document.createElement("div");
+            col.className = "col"; // Colonne Bootstrap
+
+            col.innerHTML = `
+                <div class="card h-100">
+                    <img src="images_livres/${encodeURIComponent(book.titre)}.png" class="card-img-top" alt="${book.titre}" style="height:200px; object-fit:cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">${book.titre}</h5>
+                        <p class="card-text">Par <strong>${book.auteur}</strong></p>
+                        <p class="card-text"><small class="text-muted">${book.categorie} - ${book.annee_publication}</small></p>
                     </div>
-                    <a href="enregistrement_emprunt.php?id=${book.id}&titre=${encodeURIComponent(book.titre)}" class="reserve-link ${book.disponible ? "disabled-link" : ""} btn btn-primary"> 
-                        ${book.disponible ? "Disponible" : "Réserver"}
-                    </a>
+                    <div class="card-footer">
+                        <a href="enregistrement_emprunt.php?id=${book.id}&titre=${encodeURIComponent(book.titre)}" class="btn btn-primary w-100 ${book.disponible ? "disabled-link" : ""}">
+                            ${book.disponible ? "Disponible" : "Réserver"}
+                        </a>
+                    </div>
+                </div>
+            `;
+            row.appendChild(col);
+        });
 
-                `;
-                bookList.appendChild(listItem);
-            });
-        }
+        bookList.appendChild(row); // Ajoute la grille au conteneur
+    }
+
 
         // Fonction pour afficher la liste des livres
 
