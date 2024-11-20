@@ -3,6 +3,17 @@
     include "head_emprunt.php"; 
 ?>
 
+<?php
+// Vérification et récupération des paramètres
+$id = isset($_GET['id']) ? intval($_GET['id']) : null;
+$titre = isset($_GET['titre']) ? htmlspecialchars($_GET['titre']) : '';
+
+// Vérifier si les paramètres sont valides
+if (!$id || !$titre) {
+    echo "Erreur : informations manquantes.";
+    exit;
+}
+?>
 
 
     <!-- Conteneur principal -->
