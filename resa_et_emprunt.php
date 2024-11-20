@@ -165,9 +165,10 @@
                     <div class="book-details">
                         <strong>${book.titre}</strong> par ${book.auteur} (${book.categorie}, ${book.annee_publication})
                     </div>
-                    <a href="enregistrement_emprunt.php?id=${book.id}?titre=${book.titre}" class="reserve-link ${book.disponible ? "disabled-link" : ""} btn btn-primary">
+                    <a href="enregistrement_emprunt.php?id=${book.id}&titre=${encodeURIComponent(book.titre)}"    class="reserve-link ${book.disponible ? "disabled-link" : ""} btn btn-primary"> 
                         ${book.disponible ? "Disponible" : "Réserver"}
                     </a>
+
                 `;
                 bookList.appendChild(listItem);
             });

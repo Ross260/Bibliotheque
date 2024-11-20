@@ -31,7 +31,7 @@ if (!$id || !$titre) {
                 <input type="text" name="name" id="borrower-name" placeholder="Entrez le nom de l'utilisateur" required>
 
                 <label for="book-title">Titre du Livre :</label>
-                <input type="text" name="titre" id="book-title" placeholder="Entrez le titre du livre" required>
+                <input type="text" name="titre" id="book-title" placeholder="Entrez le titre du livre" value="<?php echo $titre; ?>" required>
 
                 <label for="borrow-date">Date de l'Emprunt :</label>
                 <input type="date" name="date_entree" id="borrow-date" required>
