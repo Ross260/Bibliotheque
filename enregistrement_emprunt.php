@@ -4,14 +4,17 @@
 ?>
 
 <?php
-// Vérification et récupération des paramètres
-$id = isset($_GET['id']) ? intval($_GET['id']) : null;
-$titre = isset($_GET['titre']) ? htmlspecialchars($_GET['titre']) : '';
-
-// Vérifier si les paramètres sont valides
-if (!$id || !$titre) {
-    echo "Erreur : informations manquantes.";
-    exit;
+if (isset($_GET['id'])) {
+    # code...
+    // Vérification et récupération des paramètres
+    $id = isset($_GET['id']) ? intval($_GET['id']) : null;
+    $titre = isset($_GET['titre']) ? htmlspecialchars($_GET['titre']) : '';
+    
+    // Vérifier si les paramètres sont valides
+    if (!$id || !$titre) {
+        echo "Erreur : informations manquantes.";
+        exit;
+    }
 }
 ?>
 
@@ -31,7 +34,7 @@ if (!$id || !$titre) {
                 <input type="text" name="name" id="borrower-name" placeholder="Entrez le nom de l'utilisateur" required>
 
                 <label for="book-title">Titre du Livre :</label>
-                <input type="text" name="titre" id="book-title" placeholder="Entrez le titre du livre" value="<?php echo $titre; ?>" required>
+                <input type="text" name="titre" id="book-title" placeholder="Entrez le titre du livre" value="<?php if (isset($_GET['id'])) {echo $titre;} ?>" required>
 
                 <label for="borrow-date">Date de l'Emprunt :</label>
                 <input type="date" name="date_entree" id="borrow-date" required>

@@ -142,7 +142,7 @@
     <script>
    const books = [
     { id: 1, titre: "Shining", auteur: "Stephen King", categorie: "horreur", annee_publication: 1977, Emprunter: true },
-    { id: 2, titre: "L'Exorciste", auteur: "William Peter Blatty", categorie: "horreur", annee_publication: 1971, Emprunter: true },
+    { id: 2, titre: "Exorciste", auteur: "William Peter Blatty", categorie: "horreur", annee_publication: 1971, Emprunter: true },
     { id: 3, titre: "Orgueil et Préjugés", auteur: "Jane Austen", categorie: "romance", annee_publication: 1813, Emprunter: true },
     { id: 4, titre: "Les Hauts de Hurlevent", auteur: "Emily Brontë", categorie: "romance", annee_publication: 1847, Emprunter: true },
     { id: 5, titre: "Le Comte de Monte-Cristo", auteur: "Alexandre Dumas", categorie: "historique", annee_publication: 1844, Emprunter: true },
@@ -165,7 +165,7 @@
                     <div class="book-details">
                         <strong>${book.titre}</strong> par ${book.auteur} (${book.categorie}, ${book.annee_publication})
                     </div>
-                    <a href="enregistrement_emprunt.php?id=${book.id}&titre=${encodeURIComponent(book.titre)}"    class="reserve-link ${book.disponible ? "disabled-link" : ""} btn btn-primary"> 
+                    <a href="enregistrement_emprunt.php?id=${book.id}&titre=${encodeURIComponent(book.titre)}" class="reserve-link ${book.disponible ? "disabled-link" : ""} btn btn-primary"> 
                         ${book.disponible ? "Disponible" : "Réserver"}
                     </a>
 
