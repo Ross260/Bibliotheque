@@ -95,10 +95,6 @@ if (isset($_GET['id'])) {
                 <div class="alert alert-danger">impossible d'emprunter le livre</div>
         <?php
             }
-
-
-
-
             // pour les emprunts
             $sql = "INSERT INTO emprunt (nom, titre_livre, date_emprunt, date_remise) 
         VALUES (:nom, :titre, :date_entree, :date_sortie)";
