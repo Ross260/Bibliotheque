@@ -124,11 +124,11 @@ if (isset($_GET['id'])) {
 
 
 
-<button class="back-to-top" onclick="redirectToHome()">Retourner à l'accueil</button>
+<button class="back-to-top" onclick="redirectToHome()">Retourner la biliothèque</button>
 
 <script>
     function redirectToHome() {
-        window.location.href = "index.php"; // Remplacez par le chemin de la page de destination
+        window.location.href = "resa_et_emprunt.php"; // Remplacez par le chemin de la page de destination
     }
 </script>
 </body>

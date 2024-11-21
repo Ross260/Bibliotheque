@@ -103,7 +103,7 @@ if (isset($_GET['id'])) {
 <body>
     <div class="container">
         <h1>Réservation de Livre</h1>
-        <form id="reservationForm">
+        <form id="reservationForm" method="POST" action="reservation.php">
             <div class="form-group">
                 <label for="user">Utilisateur :</label>
                 <input type="text" name="name" id="borrower-name" placeholder="Entrez le nom de l'utilisateur" value="<?= $_SESSION['prenom'] ?>" required>
@@ -113,13 +113,13 @@ if (isset($_GET['id'])) {
             <div class="form-group">
                 <label for="book">Livre :</label>
                 <input type="text" name="titre" id="book-title" placeholder="Entrez le titre du livre" value="<?php if (isset($_GET['id'])) {
-                                                                                                                echo $titre;
-                                                                                                            } ?>" required>
+                                                                                                                    echo $titre;
+                                                                                                                } ?>" required>
             </div>
 
             <div class="form-group">
                 <label for="reservationDate">Date de réservation :</label>
-                <input type="date" id="reservationDate" name="reservationDate" required>
+                <input type="text" id="reservationDate" name="reservationDate" required placeholder="jj/mm/aaaa">
             </div>
 
             <button type="submit" name="bout" class="btn">Réserver</button>
@@ -128,32 +128,43 @@ if (isset($_GET['id'])) {
         <div id="successMessage" class="hidden">
             <p>La réservation a été effectuée avec succès !</p>
         </div>
-    </div>
-</body>
 
-</html>
-
-
-<?php
+        <?php
         if (isset($_POST["bout"])) {
             $conn = new PDO('mysql:host=localhost;dbname=bibliotheque', 'root', '');
+            // Données de mise à jour
+            $nom = $_POST['name']; // Nom du livre depuis un formulaire
+            $titre = $_POST['titre'];
+            $date_resa = $_POST['reservationDate'];
 
             // pour les emprunts
-            $sql = "INSERT INTO emprunt (nom, titre_livre, date_emprunt, date_remise) 
-        VALUES (:nom, :titre, :date_entree, :date_sortie)";
+            $sql = "INSERT INTO reservation (nom, titre_livre, date_resa) VALUES (:nom, :titre, :reservationDate)";
             $stmt = $conn->prepare($sql);
 
             // Lier les paramètres pour sécuriser les données
             $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
             $stmt->bindParam(':titre', $titre, PDO::PARAM_STR);
-            $stmt->bindParam(':date_entree', $date_entree, PDO::PARAM_STR);
-            $stmt->bindParam(':date_sortie', $date_sortie, PDO::PARAM_STR);
+            $stmt->bindParam(':reservationDate', $date_resa, PDO::PARAM_STR);
 
             // Exécuter la requête
             if ($stmt->execute()) {
-                echo "<div class='alert alert-success'>Emprunt enregistré avec succès.</div>";
+                echo "<div class='alert alert-success' style='margin-top:20px;'>Reservation enregistré avec succès.</div>";
             } else {
-                echo "<div class='alert alert-danger'>Erreur lors de l'enregistrement de l'emprunt</div>";
+                echo "<div class='alert alert-danger'>Erreur lors de l'enregistrement de la reservation</div>";
             }
         }
         ?>
+
+    </div>
+
+
+    <button class="back-to-top" onclick="redirectToHome()">Retourner la biliothèque</button>
+
+    <script>
+        function redirectToHome() {
+            window.location.href = "resa_et_emprunt.php"; // Remplacez par le chemin de la page de destination
+        }
+    </script>
+</body>
+
+</html>
