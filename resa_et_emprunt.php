@@ -138,19 +138,19 @@
             </ul>
         </div>
     </div>
-
+        
     <script>
    const books = [
-    { id: 1, titre: "Shining", auteur: "Stephen King", categorie: "horreur", annee_publication: 1977, Emprunter: true },
-    { id: 2, titre: "Exorciste", auteur: "William Peter Blatty", categorie: "horreur", annee_publication: 1971, Emprunter: true },
-    { id: 3, titre: "Orgueil et Préjugés", auteur: "Jane Austen", categorie: "romance", annee_publication: 1813, Emprunter: true },
-    { id: 4, titre: "Les Hauts de Hurlevent", auteur: "Emily Brontë", categorie: "romance", annee_publication: 1847, Emprunter: true },
-    { id: 5, titre: "Le Comte de Monte-Cristo", auteur: "Alexandre Dumas", categorie: "historique", annee_publication: 1844, Emprunter: true },
-    { id: 6, titre: "Les Piliers de la Terre", auteur: "Ken Follett", categorie: "historique", annee_publication: 1989, Emprunter: true },
-    { id: 7, titre: "Le Chien des Baskerville", auteur: "Arthur Conan Doyle", categorie: "policier", annee_publication: 1902, Emprunter: true },
-    { id: 8, titre: "La Vérité sur l'affaire Harry Quebert", auteur: "Joël Dicker", categorie: "policier", annee_publication: 2012, Emprunter: true },
-    { id: 9, titre: "1984", auteur: "George Orwell", categorie: "fiction", annee_publication: 1949, Emprunter: true },
-    { id: 10, titre: "Le Meilleur des mondes", auteur: "Aldous Huxley", categorie: "fiction", annee_publication: 1932, Emprunter: true }
+    { id: 1, titre: "Shining", auteur: "Stephen King", categorie: "horreur", annee_publication: 1977, emprunter: true },
+    { id: 2, titre: "Exorciste", auteur: "William Peter Blatty", categorie: "horreur", annee_publication: 1971, emprunter: true },
+    { id: 3, titre: "Orgueil et Préjugés", auteur: "Jane Austen", categorie: "romance", annee_publication: 1813, emprunter: true },
+    { id: 4, titre: "Les Hauts de Hurlevent", auteur: "Emily Brontë", categorie: "romance", annee_publication: 1847, emprunter: true },
+    { id: 5, titre: "Le Comte de Monte-Cristo", auteur: "Alexandre Dumas", categorie: "historique", annee_publication: 1844, emprunter: true },
+    { id: 6, titre: "Les Piliers de la Terre", auteur: "Ken Follett", categorie: "historique", annee_publication: 1989, emprunter: true },
+    { id: 7, titre: "Le Chien des Baskerville", auteur: "Arthur Conan Doyle", categorie: "policier", annee_publication: 1902, emprunter: true },
+    { id: 8, titre: "La Vérité sur l'affaire Harry Quebert", auteur: "Joël Dicker", categorie: "policier", annee_publication: 2012, emprunter: true },
+    { id: 9, titre: "1984", auteur: "George Orwell", categorie: "fiction", annee_publication: 1949, emprunter: true },
+    { id: 10, titre: "Le Meilleur des mondes", auteur: "Aldous Huxley", categorie: "fiction", annee_publication: 1932, emprunter: true }
 ];
 
 
@@ -177,7 +177,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="enregistrement_emprunt.php?id=${book.id}&titre=${encodeURIComponent(book.titre)}" class="btn btn-primary w-100 ${book.disponible ? "disabled-link" : ""}">
-                            ${book.disponible ? "Disponible" : "Réserver"}
+                            ${book.emprunter ? "Emprunter" : "Réserver"}
                         </a>
                     </div>
                 </div>
