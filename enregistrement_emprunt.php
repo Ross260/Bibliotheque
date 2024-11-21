@@ -4,7 +4,7 @@ include "head_emprunt.php";
 
 <?php
 if (isset($_GET['id'])) {
-    # code...
+ 
     // Vérification et récupération des paramètres
     $id = isset($_GET['id']) ? intval($_GET['id']) : null;
     $titre = isset($_GET['titre']) ? htmlspecialchars($_GET['titre']) : '';
@@ -14,6 +14,11 @@ if (isset($_GET['id'])) {
         echo "Erreur : informations manquantes.";
         exit;
     }
+
+    //je me connecte à la BD
+    
+
+
 }
 ?>
 

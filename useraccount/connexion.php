@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // Vérifiez si l'utilisateur a l'ID égal à 1
         if ($user['id_utilisateur'] == 1) {
-            header("Location: admin.html"); // Page spécifique pour id = 1
+            header("Location: bibliothequaire.php"); // Page spécifique pour id = 1
             exit;
         } else {
-            header("Location: reussie.html"); // Page pour les autres utilisateurs
+            header("Location: ../resa_et_emprunt.php"); // Page pour les autres utilisateurs
             exit;
         }
     } else {
