@@ -42,4 +42,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 // Fermer la connexion
 mysqli_close($id);
-?>

@@ -197,8 +197,8 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
             background-color: white;
             border-radius: 10px;
             margin: 20px;
-            box-shadow: 0 ;
-            overflow: auto; 
+            box-shadow: 0;
+            overflow: auto;
         }
 
         header h1 {
@@ -263,7 +263,7 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     </style>
 
-<style>
+    <style>
         .tabs body {
             font-family: Arial, sans-serif;
             background-color: #F0E6D2;
@@ -307,7 +307,7 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .tabs .book-list .card {
             margin-bottom: 20px;
         }
-</style>
+    </style>
 </head>
 
 <body>
@@ -337,78 +337,78 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!-- Contenu principal -->
         <main class="main-content">
             <header>
-                <h1>Ma Bibliothèque</h1>
+                <h1> Salut <?= $_SESSION['prenom'] ?>, Bienvenue dans la bibliothèque de livre</h1>
             </header>
 
 
-            
+
             <!-- Onglets -->
             <section class="tabs">
                 <!-- <button class="tab active" data-section="all">Tous</button> -->
 
                 <div class="container">
-        <p>bonjour <?= $_SESSION['prenom'] ?></p>
-        <h1>Réservation et Emprunt</h1>
 
-        <!-- Formulaire de recherche -->
-        <form method="GET" action="" class="search-container">
-            <input type="text" id="search-input" name="search" placeholder="Rechercher un livre..." value="<?= htmlspecialchars($search) ?>">
-            <button type="submit" id="search-btn" class="btn btn-primary">Rechercher</button>
-        </form>
+                    <h1>Réservation et Emprunt</h1>
 
-        <!-- Formulaire de filtre -->
-        <form method="GET" action="" class="filters">
-            <label for="filter-categorie">Filtrer par Catégorie:</label>
-            <select id="filter-categorie" name="categorie" onchange="this.form.submit()">
-                <option value="">Toutes les catégories</option>
-                <option value="FICTION" <?= $categorie === 'FICTION' ? 'selected' : '' ?>>Fiction</option>
-                <option value="ROMANCE" <?= $categorie === 'ROMANCE' ? 'selected' : '' ?>>Romance</option>
-                <option value="POLICIER" <?= $categorie === 'POLICIER' ? 'selected' : '' ?>>Policier</option>
-                <option value="HISTORIQUE" <?= $categorie === 'HISTORIQUE' ? 'selected' : '' ?>>Historique</option>
-                <option value="horreur" <?= $categorie === 'horreur' ? 'selected' : '' ?>>Horreur</option>
-            </select>
-        </form>
+                    <!-- Formulaire de recherche -->
+                    <form method="GET" action="" class="search-container">
+                        <input type="text" id="search-input" name="search" placeholder="Rechercher un livre..." value="<?= htmlspecialchars($search) ?>">
+                        <button type="submit" id="search-btn" class="btn btn-primary">Rechercher</button>
+                    </form>
 
-        <!-- Liste des livres -->
-        <div class="book-list row row-cols-1 row-cols-md-3 g-4">
-            <?php if (empty($books)): ?>
-                <p>Aucun livre trouvé.</p>
-            <?php else: ?>
-                <?php foreach ($books as $book): ?>
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="images_livres/<?= htmlspecialchars($book['nom_livre']) ?>.png" class="card-img-top" alt="<?= htmlspecialchars($book['nom_livre']) ?>" style="height:200px; object-fit:cover;">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($book['nom_livre']) ?></h5>
-                                <p class="card-text">Par <strong><?= htmlspecialchars($book['auteur']) ?></strong></p>
-                                <p class="card-text"><small class="text-muted"><?= htmlspecialchars($book['categorie']) ?> - <?= htmlspecialchars($book['description']) ?></small></p>
-                            </div>
-                            <div class="card-footer">
-                                <?php
-                                if (strtolower($book['etat']) === 'disponible') {
+                    <!-- Formulaire de filtre -->
+                    <form method="GET" action="" class="filters">
+                        <label for="filter-categorie">Filtrer par Catégorie:</label>
+                        <select id="filter-categorie" name="categorie" onchange="this.form.submit()">
+                            <option value="">Toutes les catégories</option>
+                            <option value="FICTION" <?= $categorie === 'FICTION' ? 'selected' : '' ?>>Fiction</option>
+                            <option value="ROMANCE" <?= $categorie === 'ROMANCE' ? 'selected' : '' ?>>Romance</option>
+                            <option value="POLICIER" <?= $categorie === 'POLICIER' ? 'selected' : '' ?>>Policier</option>
+                            <option value="HISTORIQUE" <?= $categorie === 'HISTORIQUE' ? 'selected' : '' ?>>Historique</option>
+                            <option value="horreur" <?= $categorie === 'horreur' ? 'selected' : '' ?>>Horreur</option>
+                        </select>
+                    </form>
 
-                                ?> <a href="enregistrement_emprunt.php?id=<?= $book['id_livre'] ?>&titre=<?= urlencode($book['nom_livre']) ?>" class="btn btn-primary w-100">
-                                        <?= "Emprunter"; ?>
-                                    </a>
-                                <?php
-                                } else {
-                                ?>
+                    <!-- Liste des livres -->
+                    <div class="book-list row row-cols-1 row-cols-md-3 g-4">
+                        <?php if (empty($books)): ?>
+                            <p>Aucun livre trouvé.</p>
+                        <?php else: ?>
+                            <?php foreach ($books as $book): ?>
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="images_livres/<?= htmlspecialchars($book['nom_livre']) ?>.png" class="card-img-top" alt="<?= htmlspecialchars($book['nom_livre']) ?>" style="height:200px; object-fit:cover;">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?= htmlspecialchars($book['nom_livre']) ?></h5>
+                                            <p class="card-text">Par <strong><?= htmlspecialchars($book['auteur']) ?></strong></p>
+                                            <p class="card-text"><small class="text-muted"><?= htmlspecialchars($book['categorie']) ?> - <?= htmlspecialchars($book['description']) ?></small></p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <?php
+                                            if (strtolower($book['etat']) === 'disponible') {
 
-                                    <a href="reservation.php?id=<?= $book['id_livre'] ?>&titre=<?= urlencode($book['nom_livre']) ?>" class="btn btn-success w-100">
-                                        <?= "Reserver"; ?>
-                                    </a>
-                                <?php
-                                }
-                                ?>
+                                            ?> <a href="enregistrement_emprunt.php?id=<?= $book['id_livre'] ?>&titre=<?= urlencode($book['nom_livre']) ?>" class="btn btn-primary w-100">
+                                                    <?= "Emprunter"; ?>
+                                                </a>
+                                            <?php
+                                            } else {
+                                            ?>
+
+                                                <a href="reservation.php?id=<?= $book['id_livre'] ?>&titre=<?= urlencode($book['nom_livre']) ?>" class="btn btn-success w-100">
+                                                    <?= "Reserver"; ?>
+                                                </a>
+                                            <?php
+                                            }
+                                            ?>
 
 
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </div>
+                </div>
 
             </section>
             <section class="list-section" id="listes-section" style="display: none;">
