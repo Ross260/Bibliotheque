@@ -50,3 +50,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Veuillez sélectionner une couverture pour le livre.";
     }
 }
+?>

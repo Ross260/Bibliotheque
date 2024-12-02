@@ -203,7 +203,9 @@
                 <a href="#add">Ajouter un Livre</a>
                 <a href="#edit">Modifier un Livre</a>
                 <a href="#delete">Supprimer un Livre</a>
+                
                 <a href="liste_user.php">Liste des Utilisateurs</a> <!-- Lien vers la section utilisateurs -->
+                <a href="livres.php">Livres</a>
             </nav>
         </div>
     </header>
@@ -278,22 +280,6 @@
 
         </div>
 
-        <!-- Liste des utilisateurs -->
-        <div class="user-list" id="users">
-            <div class="section-title">Liste des Utilisateurs</div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nom</th>
-                        <th>Email</th>
-                        <th>Statut</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-            </table>
-        </div>
     </div>
     </div>
     <button class="back-to-top" onclick="redirectToHome()">Retourner à l'accueil</button>

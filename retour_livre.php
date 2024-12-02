@@ -21,43 +21,45 @@
         <div>
             <?php
             if (isset($_POST["send"])) {
-                $conn = new PDO('mysql:host=localhost;dbname=bibliotheque', 'root', '');
+                try {
+                    // Connexion à la base de données
+                    $conn = new PDO('mysql:host=localhost;dbname=bibliotheque;charset=utf8', 'root', '');
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-                if ($conn) {
-                    echo "connexion reussie";
-                }
+                    echo "Connexion réussie";
 
-                // Données de mise à jour
-                $nom = $_POST['titre'];
-                $etat = $_POST['etat'];
-                $date = $_POST['date'];
+                    // Données de mise à jour
+                    $nom = $_POST['titre'];
+                    $etat = $_POST['etat'];
+                    $date = $_POST['date'];
 
-                // Requête SQL préparée
-                $sql = "UPDATE livre SET etat = :etat WHERE nom_livre = :nom_livre";
+                    // Requête pour mettre à jour l'état du livre
+                    $sql = "UPDATE livre SET etat = :etat WHERE nom_livre = :nom_livre";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindParam(':etat', $etat);
+                    $stmt->bindParam(':nom_livre', $nom);
 
-                // Préparer la requête
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':etat', $etat);
-                $stmt->bindParam(':nom_livre', $nom);
+                    // Exécution de la mise à jour
+                    if ($stmt->execute()) {
+                        // Suppression de l'emprunt dans la table `emprunt`
+                        $sqlDelete = "DELETE FROM emprunt WHERE titre_livre = :titre_livre";
+                        $stmtDelete = $conn->prepare($sqlDelete);
+                        $stmtDelete->bindParam(':titre_livre', $nom);
 
-
-
-
-                if ($stmt->execute()) {
-            ?>
-                    <div class="alert alert-success">Livre retourner avec success</div>
-                <?php
-                } else {
-                ?>
-                    <div class="alert alert-danger">impossible de retourner le livre</div>
-            <?php
+                        if ($stmtDelete->execute()) {
+                            echo '<div class="alert alert-success">Livre retourné et supprimé de la liste des emprunts avec succès</div>';
+                        } else {
+                            echo '<div class="alert alert-danger">Erreur lors de la suppression de l\'emprunt</div>';
+                        }
+                    } else {
+                        echo '<div class="alert alert-danger">Impossible de mettre à jour l\'état du livre</div>';
+                    }
+                } catch (PDOException $e) {
+                    echo '<div class="alert alert-danger">Erreur : ' . $e->getMessage() . '</div>';
                 }
             }
             ?>
         </div>
-
-    </div>
-
     </div>
 
     <button class="back-to-top" onclick="redirectToHome()">Retourner à l'accueil</button>

@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "DELETE FROM livre WHERE id_livre = :id_livre";
     $stmt = $pdo->prepare($sql);
-
+    
     $stmt->bindParam(':id_livre', $id_livre);
 
     if ($stmt->execute()) {
@@ -27,3 +27,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Erreur lors de la suppression du livre.";
     }
 }
+?>
