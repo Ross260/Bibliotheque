@@ -103,9 +103,7 @@
         <div class="header-container">
             <h1>BiblioSmart</h1>
             <nav>
-                <a href="index.html">Accueil</a>
-                <a href="livres.php">Livres</a>
-                <a href="liste_user.php">Utilisateurs</a>
+                <a href="Bibliothecaire.php">Gestion des livres</a>
             </nav>
         </div>
     </header>

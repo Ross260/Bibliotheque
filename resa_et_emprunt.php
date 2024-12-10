@@ -77,137 +77,137 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         /* Barre latérale */
        /* Barre latérale */
-.sidebar {
-    width: 260px;
-    background-color: #ecddbd;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* S'assurer que les éléments sont alignés en haut */
-    font-family: Arial, sans-serif;
-    border-right: 1px solid #ddd;
-}
+        .sidebar {
+            width: 260px;
+            background-color: #ecddbd;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* S'assurer que les éléments sont alignés en haut */
+            font-family: Arial, sans-serif;
+            border-right: 1px solid #ddd;
+        }
 
-/* Repositionnement des éléments dans la barre latérale */
-.user-info {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        /* Repositionnement des éléments dans la barre latérale */
+        .user-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-.menu {
-    list-style: none;
-    padding: 0;
-    margin-top: 10px; /* Ajout d'un espacement pour les éléments du menu */
-}
-
-.menu li {
-    margin-bottom: 10px;
-}
-
-.menu li a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #2C3E50;
-    font-size: 14px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.menu li a i {
-    margin-right: 10px;
-    font-size: 16px;
-}
-
-/* Changer la couleur d'active pour les onglets */
-.menu li a.active {
-    background-color: white; /* Enlever le fond vert */
-    color: #2C3E50; /* Garder la couleur du texte */
-}
-
-.menu li a:hover {
-    background-color: #A8D5BA;
-    color: white;
-}
-
-.menu.bottom {
-    margin-top: auto; /* S'assurer que la section Notifications reste en bas */
-}
-
-/* Retirer le vert autour du bouton Bibliothèque */
-.tabs .tab.active {
-    background-color: white; /* Enlever la couleur d'arrière-plan verte */
-    color: #2C3E50; /* Garder la couleur du texte */
-    border-color: #ddd; /* Conserver la bordure classique */
-}
-
-/* Autres styles (inchangés) */
-footer {
-    margin-top: 150px;
-    text-align: center;
-    font-size: 12px;
-    color: #666;
-}
-
-footer .logout {
-    text-decoration: none;
-    color: #2C3E50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-footer small {
-    display: block;
-    margin-top: 5px;
-    color: #999;
-}
-
-/* Contenu principal */
-.main-content {
-    flex: 1;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    margin: 20px;
-    box-shadow: 0;
-    overflow: auto;
-}
-
-header h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #34495e;
-}
-
-.tabs .tab {
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.tabs .tab.active {
-    background-color: white;
-    color: #2C3E50;
-    border-color: #ddd;
-}
-
-.tabs .tab:hover {
-    background-color: #A8D5BA;
-    color: white;
-}
-
-        /* Listes */
-        .list {
+        .menu {
             list-style: none;
             padding: 0;
+            margin-top: 10px; /* Ajout d'un espacement pour les éléments du menu */
         }
+
+        .menu li {
+            margin-bottom: 10px;
+        }
+
+        .menu li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #2C3E50;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu li a i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        /* Changer la couleur d'active pour les onglets */
+        .menu li a.active {
+            background-color: white; /* Enlever le fond vert */
+            color: #2C3E50; /* Garder la couleur du texte */
+        }
+
+        .menu li a:hover {
+            background-color: #A8D5BA;
+            color: white;
+        }
+
+        .menu.bottom {
+            margin-top: auto; /* S'assurer que la section Notifications reste en bas */
+        }
+
+        /* Retirer le vert autour du bouton Bibliothèque */
+        .tabs .tab.active {
+            background-color: white; /* Enlever la couleur d'arrière-plan verte */
+            color: #2C3E50; /* Garder la couleur du texte */
+            border-color: #ddd; /* Conserver la bordure classique */
+        }
+
+        /* Autres styles (inchangés) */
+        footer {
+            margin-top: 150px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+
+        footer .logout {
+            text-decoration: none;
+            color: #2C3E50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        footer small {
+            display: block;
+            margin-top: 5px;
+            color: #999;
+        }
+
+        /* Contenu principal */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            margin: 20px;
+            box-shadow: 0;
+            overflow: auto;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        .tabs .tab {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .tabs .tab.active {
+            background-color: white;
+            color: #2C3E50;
+            border-color: #ddd;
+        }
+
+        .tabs .tab:hover {
+            background-color: #A8D5BA;
+            color: white;
+        }
+
+                /* Listes */
+                .list {
+                    list-style: none;
+                    padding: 0;
+                }
 
         .list li {
             display: flex;
@@ -230,9 +230,7 @@ header h1 {
         .list .view-btn:hover {
             background-color: #A8D5BA;
         }
-    </style>
 
-    <style>
         .tabs body {
             font-family: Arial, sans-serif;
             background-color: #F0E6D2;
@@ -293,11 +291,14 @@ header h1 {
                     <li><a href="#" class="tab" data-section="ma-liste"><i class="icon-list"></i> Ma liste</a></li> <!-- Onglet "Ma liste" -->
                 </ul>
                 <ul class="menu bottom">
-                    <li><a href="notif.html"><i class="icon-message"></i> Notifications</a></li>
+                    <li><a href="notif.php" data-section="ntification" class="tab"><i class="icon-message"></i> Notifications</a></li>
+                    <!-- <li><a href="notif.php" data-section="notification" class="tab"><i class="icon-message"></i> Notifications</a></li> -->
+
+                    <!-- <button id="show-notifications"  data-section="notification">Notifications</button> -->
                 </ul>
             </nav>
             <footer>
-                <a href="user_register.php" class="logout"><i class="icon-logout"></i> Se déconnecter</a>
+                <a href="deco.php" class="logout"><i class="icon-logout"></i> Se déconnecter</a>
                 <p>BiblioSmart</p>
                 <small>Tous droits réservés</small>
             </footer>
@@ -317,7 +318,7 @@ header h1 {
                 <!-- <button class="tab active" data-section="all">Tous</button> -->
 
                 <section class="tabs" id="bibliotheque-section">
-    <div class="container">
+        <div class="container">
         <h1>Réservation et Emprunt</h1>
 
         <!-- Formulaire de recherche -->
@@ -391,8 +392,8 @@ header h1 {
                         <div class="card-footer">
                             <!-- Bouton Retourner -->
                             <a href="retour_livre.php?id=<?= urlencode($emprunt['id_emprunt']) ?>&titre=<?= urlencode($emprunt['titre_livre']) ?>" class="btn btn-danger w-100">
-Retourner
-</a>
+    Retourner
+    </a>
 
                         </div>
                     </div>
@@ -403,11 +404,12 @@ Retourner
     <button id="back-to-bibliotheque" class="btn btn-secondary">Retour à la bibliothèque</button>
 </section>
 
+
         </main>
     </div>
    <script>
     // Gérer les onglets
-document.querySelectorAll('.tab').forEach(tab => {
+    document.querySelectorAll('.tab').forEach(tab => {
     tab.addEventListener('click', () => {
         // Réinitialiser tous les onglets
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -453,9 +455,14 @@ if (backToBibliothequeBtn) {
         // Cacher la section "Ma Liste"
         document.getElementById("ma-liste-section").style.display = 'none';
 
+        document.getElementById("notification-section").style.display = 'none';
+
         // Afficher la section bibliothèque
         document.getElementById("bibliotheque-section").style.display = 'block';
     });
+
+
+
 </script>
 </body>
 

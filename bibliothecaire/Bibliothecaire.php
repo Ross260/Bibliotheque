@@ -204,7 +204,6 @@
                 <a href="#edit">Modifier un Livre</a>
                 <a href="#delete">Supprimer un Livre</a>
                 
-                <a href="liste_user.php">Liste des Utilisateurs</a> <!-- Lien vers la section utilisateurs -->
                 <a href="livres.php">Livres</a>
             </nav>
         </div>
@@ -286,7 +285,7 @@
 
     <script>
         function redirectToHome() {
-            window.location.href = "acceuil.html"; // Remplacez par le chemin de la page de destination
+            window.location.href = "../index.php"; // Remplacez par le chemin de la page de destination
         }
     </script>
 </body>

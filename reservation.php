@@ -1,8 +1,6 @@
 <?php
 session_start();
 if (isset($_GET['id'])) {
-
-
     // Vérification et récupération des paramètres
     $id = isset($_GET['id']) ? intval($_GET['id']) : null;
     $titre = isset($_GET['titre']) ? htmlspecialchars($_GET['titre']) : '';
@@ -15,23 +13,19 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Réservation de Livre</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="script.js" defer></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
         }
 
         .container {
@@ -39,63 +33,70 @@ if (isset($_GET['id'])) {
             margin: 50px auto;
             padding: 20px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         h1 {
             text-align: center;
-            color: #333;
+            margin-bottom: 20px;
+            color: #343a40;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         label {
-            display: block;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
-        select,
+        input[type="text"],
         input[type="date"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
             font-size: 16px;
         }
 
         .btn {
-            display: block;
             width: 100%;
-            padding: 10px;
-            background-color: #28a745;
+            padding: 12px;
+            background-color: #198754;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
         }
 
         .btn:hover {
-            background-color: #218838;
+            background-color: #198754;
         }
 
-        .hidden {
-            display: none;
-        }
-
-        #successMessage {
+        .alert {
             margin-top: 20px;
-            padding: 10px;
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            border-radius: 4px;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
             text-align: center;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .back-to-top:hover {
+            background-color: #343a40;
         }
     </style>
 </head>
@@ -105,16 +106,13 @@ if (isset($_GET['id'])) {
         <h1>Réservation de Livre</h1>
         <form id="reservationForm" method="POST" action="reservation.php">
             <div class="form-group">
-                <label for="user">Utilisateur :</label>
+                <label for="borrower-name">Utilisateur :</label>
                 <input type="text" name="name" id="borrower-name" placeholder="Entrez le nom de l'utilisateur" value="<?= $_SESSION['prenom'] ?>" required>
-
             </div>
 
             <div class="form-group">
-                <label for="book">Livre :</label>
-                <input type="text" name="titre" id="book-title" placeholder="Entrez le titre du livre" value="<?php if (isset($_GET['id'])) {
-                                                                                                                    echo $titre;
-                                                                                                                } ?>" required>
+                <label for="book-title">Livre :</label>
+                <input type="text" name="titre" id="book-title" placeholder="Entrez le titre du livre" value="<?= isset($titre) ? $titre : '' ?>" required>
             </div>
 
             <div class="form-group">
@@ -125,46 +123,36 @@ if (isset($_GET['id'])) {
             <button type="submit" name="bout" class="btn">Réserver</button>
         </form>
 
-        <div id="successMessage" class="hidden">
-            <p>La réservation a été effectuée avec succès !</p>
-        </div>
-
         <?php
         if (isset($_POST["bout"])) {
-            $conn = new PDO('mysql:host=localhost;dbname=bibliotheque', 'root', '');
-            // Données de mise à jour
-            $nom = $_POST['name']; // Nom du livre depuis un formulaire
-            $titre = $_POST['titre'];
-            $date_resa = $_POST['reservationDate'];
+            try {
+                $conn = new PDO('mysql:host=localhost;dbname=bibliotheque', 'root', '');
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // pour les emprunts
-            $sql = "INSERT INTO reservation (nom, titre_livre, date_resa) VALUES (:nom, :titre, :reservationDate)";
-            $stmt = $conn->prepare($sql);
+                $nom = $_POST['name'];
+                $titre = $_POST['titre'];
+                $date_resa = $_POST['reservationDate'];
 
-            // Lier les paramètres pour sécuriser les données
-            $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
-            $stmt->bindParam(':titre', $titre, PDO::PARAM_STR);
-            $stmt->bindParam(':reservationDate', $date_resa, PDO::PARAM_STR);
+                $sql = "INSERT INTO reservation (nom, titre_livre, date_resa) VALUES (:nom, :titre, :reservationDate)";
+                $stmt = $conn->prepare($sql);
 
-            // Exécuter la requête
-            if ($stmt->execute()) {
-                echo "<div class='alert alert-success' style='margin-top:20px;'>Reservation enregistré avec succès.</div>";
-            } else {
-                echo "<div class='alert alert-danger'>Erreur lors de l'enregistrement de la reservation</div>";
+                $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
+                $stmt->bindParam(':titre', $titre, PDO::PARAM_STR);
+                $stmt->bindParam(':reservationDate', $date_resa, PDO::PARAM_STR);
+
+                if ($stmt->execute()) {
+                    echo "<div class='alert alert-success'>Réservation enregistrée avec succès.</div>";
+                } else {
+                    echo "<div class='alert alert-danger'>Erreur lors de l'enregistrement de la réservation.</div>";
+                }
+            } catch (PDOException $e) {
+                echo "<div class='alert alert-danger'>Erreur : " . $e->getMessage() . "</div>";
             }
         }
         ?>
 
+        <a class="back-to-top" href="resa_et_emprunt.php">Retourner à la bibliothèque</a>
     </div>
-
-
-    <button class="back-to-top" onclick="redirectToHome()">Retourner la biliothèque</button>
-
-    <script>
-        function redirectToHome() {
-            window.location.href = "resa_et_emprunt.php"; // Remplacez par le chemin de la page de destination
-        }
-    </script>
 </body>
 
 </html>
